@@ -412,8 +412,8 @@ Please confirm availability for pickup. Thanks!`;
       <div id="cart-drawer-backdrop" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-[90] transition-opacity duration-300 hidden opacity-0"></div>
 
       <!-- Cart Drawer Container -->
-      <div id="cart-drawer" class="fixed inset-y-0 right-0 w-full max-w-md flex z-[100] hidden h-screen max-h-screen">
-        <div class="w-full bg-[#121212] border-l border-zinc-800 text-white flex flex-col shadow-2xl h-screen max-h-screen overflow-hidden transform translate-x-full transition-transform duration-300" id="cart-drawer-inner">
+      <div id="cart-drawer" class="fixed inset-y-0 right-0 w-full max-w-md flex z-[100] hidden h-full max-h-screen">
+        <div class="w-full bg-[#121212] border-l border-zinc-800 text-white flex flex-col shadow-2xl h-full max-h-screen overflow-hidden transform translate-x-full transition-transform duration-300" id="cart-drawer-inner">
           
           <!-- Header -->
           <div class="p-6 border-b border-zinc-800 flex items-center justify-between flex-shrink-0">
@@ -431,68 +431,70 @@ Please confirm availability for pickup. Thanks!`;
             </button>
           </div>
 
-          <!-- Scrollable Cart Items List -->
-          <div class="flex-1 min-h-[200px] overflow-y-auto p-6 space-y-4" id="cart-items-list-container">
-            <!-- Dynamic content -->
-          </div>
-
-          <!-- Membership Section -->
-          <div class="p-6 border-t border-zinc-800 bg-[#161616] space-y-4 flex-shrink-0">
-            <div>
-              <h3 class="text-xs font-mono font-bold text-[#68bc34] uppercase tracking-widest flex items-center gap-2">
-                <i data-lucide="award" class="w-4 h-4"></i>
-                Club Membership Status
-              </h3>
-              <p class="text-[10px] text-zinc-400 mt-1">Select your pass option below (Required to reserve items)</p>
+          <!-- Scrollable Body Wrapper -->
+          <div class="flex-1 overflow-y-auto p-4 space-y-6" style="-webkit-overflow-scrolling: touch;">
+            
+            <!-- Cart Items List Container -->
+            <div id="cart-items-list-container" class="space-y-4">
+              <!-- Dynamic content -->
             </div>
 
-            <!-- Radio options / cards -->
-            <div class="grid grid-cols-2 gap-2">
-              <!-- Option 1: Existing Member -->
-              <label class="membership-card flex flex-col justify-between p-3.5 rounded-xl border border-zinc-800 bg-zinc-900/50 hover:border-zinc-700 transition duration-200 cursor-pointer text-left relative" for="member-option-existing">
-                <input type="radio" name="membership-pass" id="member-option-existing" value="existing" class="absolute top-3 right-3 accent-[#68bc34]">
-                <div>
-                  <span class="block text-[11px] font-display font-black uppercase text-white leading-tight">Active Member</span>
-                  <span class="block text-[8px] text-zinc-500 font-sans mt-0.5">Verification in-store</span>
-                </div>
-                <span class="block text-xs font-mono font-bold text-[#68bc34] mt-2">R 0</span>
-              </label>
+            <!-- Membership Section -->
+            <div class="p-4 border border-zinc-800/80 bg-[#161616]/50 rounded-2xl space-y-4">
+              <div>
+                <h3 class="text-xs font-mono font-bold text-[#68bc34] uppercase tracking-widest flex items-center gap-2">
+                  <i data-lucide="award" class="w-4 h-4"></i>
+                  Club Membership Status
+                </h3>
+                <p class="text-[10px] text-zinc-400 mt-1">Select your pass option below (Required to reserve items)</p>
+              </div>
 
-              <!-- Option 2: Day Pass -->
-              <label class="membership-card flex flex-col justify-between p-3.5 rounded-xl border border-zinc-800 bg-zinc-900/50 hover:border-zinc-700 transition duration-200 cursor-pointer text-left relative" for="member-option-day">
-                <input type="radio" name="membership-pass" id="member-option-day" value="day" class="absolute top-3 right-3 accent-[#68bc34]">
-                <div>
-                  <span class="block text-[11px] font-display font-black uppercase text-white leading-tight">Day Pass</span>
-                  <span class="block text-[8px] text-zinc-500 font-sans mt-0.5">24-Hour Access</span>
-                </div>
-                <span class="block text-xs font-mono font-bold text-[#68bc34] mt-2">R 15</span>
-              </label>
+              <!-- Radio options / cards -->
+              <div class="grid grid-cols-2 gap-2">
+                <!-- Option 1: Existing Member -->
+                <label class="membership-card flex flex-col justify-between p-3.5 rounded-xl border border-zinc-800 bg-zinc-900/50 hover:border-zinc-700 transition duration-200 cursor-pointer text-left relative" for="member-option-existing">
+                  <input type="radio" name="membership-pass" id="member-option-existing" value="existing" class="absolute top-3 right-3 accent-[#68bc34]">
+                  <div>
+                    <span class="block text-[11px] font-display font-black uppercase text-white leading-tight">Active Member</span>
+                    <span class="block text-[8px] text-zinc-500 font-sans mt-0.5">Verification in-store</span>
+                  </div>
+                  <span class="block text-xs font-mono font-bold text-[#68bc34] mt-2">R 0</span>
+                </label>
 
-              <!-- Option 3: Week Pass -->
-              <label class="membership-card flex flex-col justify-between p-3.5 rounded-xl border border-zinc-800 bg-zinc-900/50 hover:border-zinc-700 transition duration-200 cursor-pointer text-left relative" for="member-option-week">
-                <input type="radio" name="membership-pass" id="member-option-week" value="week" class="absolute top-3 right-3 accent-[#68bc34]">
-                <div>
-                  <span class="block text-[11px] font-display font-black uppercase text-white leading-tight">Week Pass</span>
-                  <span class="block text-[8px] text-zinc-500 font-sans mt-0.5">7-Day Access</span>
-                </div>
-                <span class="block text-xs font-mono font-bold text-[#68bc34] mt-2">R 25</span>
-              </label>
+                <!-- Option 2: Day Pass -->
+                <label class="membership-card flex flex-col justify-between p-3.5 rounded-xl border border-zinc-800 bg-zinc-900/50 hover:border-zinc-700 transition duration-200 cursor-pointer text-left relative" for="member-option-day">
+                  <input type="radio" name="membership-pass" id="member-option-day" value="day" class="absolute top-3 right-3 accent-[#68bc34]">
+                  <div>
+                    <span class="block text-[11px] font-display font-black uppercase text-white leading-tight">Day Pass</span>
+                    <span class="block text-[8px] text-zinc-500 font-sans mt-0.5">24-Hour Access</span>
+                  </div>
+                  <span class="block text-xs font-mono font-bold text-[#68bc34] mt-2">R 15</span>
+                </label>
 
-              <!-- Option 4: Month Pass -->
-              <label class="membership-card flex flex-col justify-between p-3.5 rounded-xl border border-zinc-800 bg-zinc-900/50 hover:border-zinc-700 transition duration-200 cursor-pointer text-left relative" for="member-option-month">
-                <input type="radio" name="membership-pass" id="member-option-month" value="month" class="absolute top-3 right-3 accent-[#68bc34]">
-                <div>
-                  <span class="block text-[11px] font-display font-black uppercase text-white leading-tight">Month Pass</span>
-                  <span class="block text-[8px] text-zinc-500 font-sans mt-0.5">30-Day Access</span>
-                </div>
-                <span class="block text-xs font-mono font-bold text-[#68bc34] mt-2">R 50</span>
-              </label>
+                <!-- Option 3: Week Pass -->
+                <label class="membership-card flex flex-col justify-between p-3.5 rounded-xl border border-zinc-800 bg-zinc-900/50 hover:border-zinc-700 transition duration-200 cursor-pointer text-left relative" for="member-option-week">
+                  <input type="radio" name="membership-pass" id="member-option-week" value="week" class="absolute top-3 right-3 accent-[#68bc34]">
+                  <div>
+                    <span class="block text-[11px] font-display font-black uppercase text-white leading-tight">Week Pass</span>
+                    <span class="block text-[8px] text-zinc-500 font-sans mt-0.5">7-Day Access</span>
+                  </div>
+                  <span class="block text-xs font-mono font-bold text-[#68bc34] mt-2">R 25</span>
+                </label>
+
+                <!-- Option 4: Month Pass -->
+                <label class="membership-card flex flex-col justify-between p-3.5 rounded-xl border border-zinc-800 bg-zinc-900/50 hover:border-zinc-700 transition duration-200 cursor-pointer text-left relative" for="member-option-month">
+                  <input type="radio" name="membership-pass" id="member-option-month" value="month" class="absolute top-3 right-3 accent-[#68bc34]">
+                  <div>
+                    <span class="block text-[11px] font-display font-black uppercase text-white leading-tight">Month Pass</span>
+                    <span class="block text-[8px] text-zinc-500 font-sans mt-0.5">30-Day Access</span>
+                  </div>
+                  <span class="block text-xs font-mono font-bold text-[#68bc34] mt-2">R 50</span>
+                </label>
+              </div>
             </div>
-          </div>
 
-          <!-- Order Summary Footer -->
-          <div class="p-6 border-t border-zinc-800 bg-zinc-950 space-y-4 flex-shrink-0">
-            <div class="space-y-1.5 text-xs">
+            <!-- Subtotal breakdown -->
+            <div class="p-4 border border-zinc-800/80 bg-zinc-900/20 rounded-2xl space-y-2 text-xs">
               <div class="flex justify-between text-zinc-400">
                 <span>Items Subtotal</span>
                 <span id="cart-summary-subtotal" class="font-mono">R 0.00</span>
@@ -501,10 +503,15 @@ Please confirm availability for pickup. Thanks!`;
                 <span>Access Pass Fee</span>
                 <span id="cart-summary-pass" class="font-mono">--</span>
               </div>
-              <div class="flex justify-between text-white font-bold text-sm pt-2 border-t border-zinc-900">
-                <span>Grand Total</span>
-                <span id="cart-summary-total" class="font-mono text-[#68bc34]">R 0.00</span>
-              </div>
+            </div>
+
+          </div>
+
+          <!-- Sticky Order Summary Footer -->
+          <div class="p-4 border-t border-neutral-800 bg-neutral-900 sticky bottom-0 z-10 space-y-4 flex-shrink-0">
+            <div class="flex justify-between text-white font-bold text-sm">
+              <span>Grand Total</span>
+              <span id="cart-summary-total" class="font-mono text-[#68bc34]">R 0.00</span>
             </div>
 
             <!-- Reserve Button -->
